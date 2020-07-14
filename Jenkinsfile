@@ -5,7 +5,7 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withTerraform(terraform : 'terraform_0_12_28') {
                     sh 'mvn clean compile'
                 }
             }
@@ -14,7 +14,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'terraform_0_12_28') {
                     sh 'mvn test'
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
 
         stage ('Deployment Stage') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'terraform_0_12_28') {
                     sh 'mvn deploy'
                 }
             }
