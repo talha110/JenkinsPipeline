@@ -14,7 +14,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'terraform_0_12_28') {
+                withTerraform(terraform : 'terraform_0_12_28') {
                     sh 'mvn test'
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
 
         stage ('Deployment Stage') {
             steps {
-                withMaven(maven : 'terraform_0_12_28') {
+                withTerraform(terraform : 'terraform_0_12_28') {
                     sh 'mvn deploy'
                 }
             }
